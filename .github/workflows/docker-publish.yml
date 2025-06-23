@@ -110,15 +110,15 @@ jobs:
             username: ubuntu
             key: ${{ secrets.EC2_PEM }}
             script: |
-              docker stop project_create_user || true
-              docker rm project_create_user || true
+              docker stop project_login || true
+              docker rm project_login || true
               docker rmi ${{ secrets.DOCKER_REPO }}:qa || true
 
               docker pull ${{ secrets.DOCKER_REPO }}:qa
 
               docker run -d \
                 --restart always \
-                --name project_create_user \
+                --name project_login \
                 -p 8080:8080 \
                 -e DBA_HOSTIP=${{ secrets.DBA_HOSTIP }} \
                 -e DBA_PORT=${{ secrets.DBA_PORT }} \
