@@ -1,7 +1,7 @@
 import requests
 
 def test_login(email, password):
-    url = "http://127.0.0.1:8081/login"
+    url = "http://52.203.72.116:8080/login"
     payload = {
         "User_mail": email,
         "password": password
@@ -16,6 +16,6 @@ def test_login(email, password):
 
 if __name__ == "__main__":
     
-    test_email = "alla@coorreea"
+    test_email = "ascorread1"
     test_password = "1234"
     test_login(test_email, test_password)
