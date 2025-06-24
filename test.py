@@ -16,6 +16,6 @@ def test_login(email, password):
 
 if __name__ == "__main__":
     
-    test_email = "ascorread1"
+    test_email = "allan2"
     test_password = "1234"
     test_login(test_email, test_password)
