@@ -5,7 +5,7 @@ Base = declarative_base()
 
 # DB Accounts
 class User(Base):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
     Id_User = Column(Integer, primary_key=True, autoincrement=True)
     Name = Column(String(100))
     Lastname = Column(String(100))
