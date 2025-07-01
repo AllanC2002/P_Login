@@ -6,19 +6,23 @@ import os
 @pytest.fixture
 def client():
     app.config["TESTING"] = True
+    app.config["PROPAGATE_EXCEPTIONS"] = True
     with app.test_client() as client:
         yield client
 
-@patch("services.functions.conection_accounts")
-def test_login_success(mock_conection, client):
-    # Simulate the secret key for JWT
+@patch("services.functions.jwt.encode") 
+@patch("services.functions.conection_accounts") 
+def test_login_success(mock_conection, mock_jwt_encode, client):
+    # Simulate SECRET_KEY
     os.environ["SECRET_KEY"] = "test-secret-key"
 
-    # Simulate the database connection
+    # Simulate response from jwt.encode
+    mock_jwt_encode.return_value = "fake.jwt.token"
+
+    # Simulate database session and user
     mock_session = MagicMock()
     mock_conection.return_value = mock_session
 
-    # Simulate a user in the database
     fake_user = MagicMock()
     fake_user.Status = 1
     fake_user.Id_User = 1
@@ -37,4 +41,4 @@ def test_login_success(mock_conection, client):
 
     assert response.status_code == 200
     json_data = response.get_json()
-    assert "token" in json_data
+    assert json_data["token"] == "fake.jwt.token"
