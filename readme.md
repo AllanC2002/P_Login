@@ -120,32 +120,4 @@ This pattern helps in quickly locating code related to a specific layer of the a
         }
         ```
 
-## Running Tests
-
-The project uses `pytest` for testing.
-
-1.  **Ensure you have installed development dependencies (including pytest):**
-    ```bash
-    pip install -r requirements.txt
-    ```
-    (Pytest is already included in the provided `requirements.txt`)
-
-2.  **Set up environment variables for testing if needed.**
-    The tests might require specific environment variables (like `SECRET_KEY`). The `test_login.py` example temporarily sets `os.environ["SECRET_KEY"]`. For database-dependent tests not mocked, ensure your test environment can connect to a test database.
-
-3.  **Run tests from the root directory:**
-    ```bash
-    pytest
-    ```
-    Pytest will automatically discover and run tests in the `tests/` directory. You should see output indicating the status of each test.
-    ```bash
-    ============================= test session starts ==============================
-    platform ... -- Python ...
-    plugins: ...
-    collected 1 item
-
-    tests/test_login.py .                                                    [100%]
-
-    ============================== 1 passed in 0.xxs ===============================
-    ```
 
