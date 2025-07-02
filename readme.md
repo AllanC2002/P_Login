@@ -1,4 +1,4 @@
-# Python Flask Login API
+# Python Flask Login Microservice
 
 This project is a simple Python Flask application that provides a user login API with JWT-based authentication and a MySQL backend.
 
